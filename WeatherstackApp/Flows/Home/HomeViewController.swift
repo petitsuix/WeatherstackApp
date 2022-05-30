@@ -9,6 +9,8 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    var viewModel: HomeViewModel?
+    
     private let parentStackView = UIStackView()
     private let homeTitle = UILabel()
     private let searchBar = UITextField()
@@ -21,17 +23,9 @@ class HomeViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func showCityWeatherScreen() {
+        viewModel?.showCityWeatherScreen()
     }
-    */
-
 }
 
 extension HomeViewController {
@@ -54,6 +48,7 @@ extension HomeViewController {
         browseButton.setTitle("Browse ➜", for: .normal)
         browseButton.backgroundColor = .systemOrange
         browseButton.roundingViewCorners(radius: 15)
+        browseButton.addTarget(self, action: #selector(showCityWeatherScreen), for: .touchUpInside)
         
         illustrationImageView.translatesAutoresizingMaskIntoConstraints = false
         illustrationImageView.image = UIImage(named: "halfearth_painted")

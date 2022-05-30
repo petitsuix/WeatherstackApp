@@ -9,6 +9,13 @@ class HomeViewModel {
     
     weak var viewDelegate: HomeViewController?
     
+    private let coordinator: AppCoordinatorProtocol
     
+    init(coordinator: AppCoordinatorProtocol) {
+        self.coordinator = coordinator
+    }
     
+    func showCityWeatherScreen() {
+        coordinator.showCityWeatherScreen()
+    }
 }

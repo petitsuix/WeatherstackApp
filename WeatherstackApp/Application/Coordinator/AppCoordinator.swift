@@ -22,6 +22,13 @@ class AppCoordinator: CoordinatorProtocol, AppCoordinatorProtocol {
     
     func showHomeScreen() {
         let homeViewController = HomeViewController()
+        homeViewController.viewModel = HomeViewModel(coordinator: self)
         navigationController.pushViewController(homeViewController, animated: false)
+    }
+    
+    func showCityWeatherScreen() {
+        let cityWeatherViewController = WeatherViewController()
+        cityWeatherViewController.viewModel = WeatherViewModel(coordinator: self)
+        navigationController.pushViewController(cityWeatherViewController, animated: true)
     }
 }

@@ -8,4 +8,5 @@
 import Foundation
 
 protocol AppCoordinatorProtocol: CoordinatorProtocol {
+    func showCityWeatherScreen()
 }
