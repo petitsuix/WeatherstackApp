@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		97030BFD2844BF1F0085EE8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97030BFC2844BF1F0085EE8F /* AppDelegate.swift */; };
 		97030BFF2844BF1F0085EE8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97030BFE2844BF1F0085EE8F /* SceneDelegate.swift */; };
-		97030C012844BF1F0085EE8F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97030C002844BF1F0085EE8F /* ViewController.swift */; };
 		97030C042844BF1F0085EE8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97030C022844BF1F0085EE8F /* Main.storyboard */; };
 		97030C072844BF1F0085EE8F /* WeatherstackApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 97030C052844BF1F0085EE8F /* WeatherstackApp.xcdatamodeld */; };
 		97030C092844BF200085EE8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97030C082844BF200085EE8F /* Assets.xcassets */; };
@@ -18,6 +17,10 @@
 		97030C212844BF200085EE8F /* WeatherstackAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97030C202844BF200085EE8F /* WeatherstackAppUITests.swift */; };
 		97030C232844BF200085EE8F /* WeatherstackAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97030C222844BF200085EE8F /* WeatherstackAppUITestsLaunchTests.swift */; };
 		97030C322844C06B0085EE8F /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97030C312844C06B0085EE8F /* APIKeys.swift */; };
+		97030C3D2844C9B00085EE8F /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97030C3C2844C9B00085EE8F /* CoordinatorProtocol.swift */; };
+		97030C412844CA8F0085EE8F /* AppCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97030C402844CA8F0085EE8F /* AppCoordinatorProtocol.swift */; };
+		97030C432844CB450085EE8F /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97030C422844CB450085EE8F /* AppCoordinator.swift */; };
+		97030C452844CC1C0085EE8F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97030C442844CC1C0085EE8F /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +44,6 @@
 		97030BF92844BF1F0085EE8F /* WeatherstackApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherstackApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97030BFC2844BF1F0085EE8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97030BFE2844BF1F0085EE8F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		97030C002844BF1F0085EE8F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		97030C032844BF1F0085EE8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		97030C062844BF1F0085EE8F /* WeatherstackApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeatherstackApp.xcdatamodel; sourceTree = "<group>"; };
 		97030C082844BF200085EE8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,6 +55,10 @@
 		97030C202844BF200085EE8F /* WeatherstackAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherstackAppUITests.swift; sourceTree = "<group>"; };
 		97030C222844BF200085EE8F /* WeatherstackAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherstackAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		97030C312844C06B0085EE8F /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
+		97030C3C2844C9B00085EE8F /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
+		97030C402844CA8F0085EE8F /* AppCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorProtocol.swift; sourceTree = "<group>"; };
+		97030C422844CB450085EE8F /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		97030C442844CC1C0085EE8F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,15 +109,15 @@
 		97030BFB2844BF1F0085EE8F /* WeatherstackApp */ = {
 			isa = PBXGroup;
 			children = (
-				97030BFC2844BF1F0085EE8F /* AppDelegate.swift */,
-				97030BFE2844BF1F0085EE8F /* SceneDelegate.swift */,
-				97030C002844BF1F0085EE8F /* ViewController.swift */,
+				97030C332844C5BE0085EE8F /* Application */,
+				97030C342844C5D10085EE8F /* Flows */,
+				97030C352844C5E90085EE8F /* Service */,
+				97030C362844C5ED0085EE8F /* Styles */,
+				97030C372844C5F40085EE8F /* Helpers */,
+				97030C382844C5FE0085EE8F /* Resources */,
+				97030C392844C6050085EE8F /* Extensions */,
+				97030C472844D1120085EE8F /* SupportingFiles */,
 				97030C022844BF1F0085EE8F /* Main.storyboard */,
-				97030C082844BF200085EE8F /* Assets.xcassets */,
-				97030C0A2844BF200085EE8F /* LaunchScreen.storyboard */,
-				97030C0D2844BF200085EE8F /* Info.plist */,
-				97030C052844BF1F0085EE8F /* WeatherstackApp.xcdatamodeld */,
-				97030C312844C06B0085EE8F /* APIKeys.swift */,
 			);
 			path = WeatherstackApp;
 			sourceTree = "<group>";
@@ -131,6 +137,121 @@
 				97030C222844BF200085EE8F /* WeatherstackAppUITestsLaunchTests.swift */,
 			);
 			path = WeatherstackAppUITests;
+			sourceTree = "<group>";
+		};
+		97030C332844C5BE0085EE8F /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				97030C3A2844C61E0085EE8F /* Delegates */,
+				97030C3F2844CA570085EE8F /* Coordinator */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		97030C342844C5D10085EE8F /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				97030C462844CD810085EE8F /* Home */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		97030C352844C5E90085EE8F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				97030C482844D15C0085EE8F /* Storage */,
+				97030C3B2844C6C90085EE8F /* Network */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		97030C362844C5ED0085EE8F /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		97030C372844C5F40085EE8F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		97030C382844C5FE0085EE8F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				97030C082844BF200085EE8F /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		97030C392844C6050085EE8F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		97030C3A2844C61E0085EE8F /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				97030BFC2844BF1F0085EE8F /* AppDelegate.swift */,
+				97030BFE2844BF1F0085EE8F /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		97030C3B2844C6C90085EE8F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				97030C312844C06B0085EE8F /* APIKeys.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		97030C3E2844CA4B0085EE8F /* CoordinatorProtocols */ = {
+			isa = PBXGroup;
+			children = (
+				97030C3C2844C9B00085EE8F /* CoordinatorProtocol.swift */,
+				97030C402844CA8F0085EE8F /* AppCoordinatorProtocol.swift */,
+			);
+			path = CoordinatorProtocols;
+			sourceTree = "<group>";
+		};
+		97030C3F2844CA570085EE8F /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				97030C3E2844CA4B0085EE8F /* CoordinatorProtocols */,
+				97030C422844CB450085EE8F /* AppCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		97030C462844CD810085EE8F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				97030C442844CC1C0085EE8F /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		97030C472844D1120085EE8F /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				97030C0A2844BF200085EE8F /* LaunchScreen.storyboard */,
+				97030C0D2844BF200085EE8F /* Info.plist */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		97030C482844D15C0085EE8F /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				97030C052844BF1F0085EE8F /* WeatherstackApp.xcdatamodeld */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,11 +385,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97030C012844BF1F0085EE8F /* ViewController.swift in Sources */,
 				97030C322844C06B0085EE8F /* APIKeys.swift in Sources */,
+				97030C3D2844C9B00085EE8F /* CoordinatorProtocol.swift in Sources */,
 				97030BFD2844BF1F0085EE8F /* AppDelegate.swift in Sources */,
+				97030C432844CB450085EE8F /* AppCoordinator.swift in Sources */,
+				97030C452844CC1C0085EE8F /* HomeViewController.swift in Sources */,
 				97030BFF2844BF1F0085EE8F /* SceneDelegate.swift in Sources */,
 				97030C072844BF1F0085EE8F /* WeatherstackApp.xcdatamodeld in Sources */,
+				97030C412844CA8F0085EE8F /* AppCoordinatorProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
