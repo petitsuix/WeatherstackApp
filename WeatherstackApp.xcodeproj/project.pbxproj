@@ -17,7 +17,7 @@
 		97030C172844BF200085EE8F /* WeatherstackAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97030C162844BF200085EE8F /* WeatherstackAppTests.swift */; };
 		97030C212844BF200085EE8F /* WeatherstackAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97030C202844BF200085EE8F /* WeatherstackAppUITests.swift */; };
 		97030C232844BF200085EE8F /* WeatherstackAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97030C222844BF200085EE8F /* WeatherstackAppUITestsLaunchTests.swift */; };
-		97030C302844BFB30085EE8F /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97030C2F2844BFB30085EE8F /* ApiKey.swift */; };
+		97030C322844C06B0085EE8F /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97030C312844C06B0085EE8F /* APIKeys.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +52,7 @@
 		97030C1C2844BF200085EE8F /* WeatherstackAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherstackAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		97030C202844BF200085EE8F /* WeatherstackAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherstackAppUITests.swift; sourceTree = "<group>"; };
 		97030C222844BF200085EE8F /* WeatherstackAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherstackAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		97030C2F2844BFB30085EE8F /* ApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
+		97030C312844C06B0085EE8F /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +111,7 @@
 				97030C0A2844BF200085EE8F /* LaunchScreen.storyboard */,
 				97030C0D2844BF200085EE8F /* Info.plist */,
 				97030C052844BF1F0085EE8F /* WeatherstackApp.xcdatamodeld */,
-				97030C2F2844BFB30085EE8F /* ApiKey.swift */,
+				97030C312844C06B0085EE8F /* APIKeys.swift */,
 			);
 			path = WeatherstackApp;
 			sourceTree = "<group>";
@@ -264,8 +264,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97030C302844BFB30085EE8F /* ApiKey.swift in Sources */,
 				97030C012844BF1F0085EE8F /* ViewController.swift in Sources */,
+				97030C322844C06B0085EE8F /* APIKeys.swift in Sources */,
 				97030BFD2844BF1F0085EE8F /* AppDelegate.swift in Sources */,
 				97030BFF2844BF1F0085EE8F /* SceneDelegate.swift in Sources */,
 				97030C072844BF1F0085EE8F /* WeatherstackApp.xcdatamodeld in Sources */,
