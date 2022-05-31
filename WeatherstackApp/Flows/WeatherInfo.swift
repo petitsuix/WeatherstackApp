@@ -11,12 +11,11 @@ import Foundation
 struct WeatherInfo: Codable {
     let request: Request
     let location: Location
-    let current: Current
+    let current: CurrentWeather
 }
 
 // MARK: - Current
-struct Current: Codable {
-    let observationTime: String
+struct CurrentWeather: Codable {
     let temperature: Int
     let weatherIcons: [String]
     let weatherDescriptions: [String]
@@ -27,7 +26,6 @@ struct Current: Codable {
     let isDay: String
 
     enum CodingKeys: String, CodingKey {
-        case observationTime = "observation_time"
         case temperature
         case weatherIcons = "weather_icons"
         case weatherDescriptions = "weather_descriptions"
@@ -57,4 +55,12 @@ struct Location: Codable {
 // MARK: - Request
 struct Request: Codable {
     let type, query, language, unit: String
+}
+
+extension WeatherInfo: Hashable, Equatable {
+    static func == (lhs: WeatherInfo, rhs: WeatherInfo) -> Bool {
+        return lhs.location.name == rhs.location.name
+    }
+    
+    func hash(into hasher: inout Hasher) {}
 }

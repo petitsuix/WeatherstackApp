@@ -14,4 +14,8 @@ class WeatherViewModel {
     init(coordinator: AppCoordinatorProtocol) {
         self.coordinator = coordinator
     }
+    
+    func fetchWeather() {
+        
+    }
 }

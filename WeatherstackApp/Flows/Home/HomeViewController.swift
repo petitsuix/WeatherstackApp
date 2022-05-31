@@ -19,7 +19,7 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
+        setupView()
         // Do any additional setup after loading the view.
     }
     
@@ -30,7 +30,7 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController {
     
-    func setup() {
+    func setupView() {
         homeTitle.text = "What's the weather like in..."
         homeTitle.font = UIFont.preferredFont(forTextStyle: .title1)
         
