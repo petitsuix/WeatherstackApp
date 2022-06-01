@@ -77,8 +77,6 @@ extension WeatherViewController {
         view.backgroundColor = .systemBackground
         view.addSubview(collectionView)
         
-        collectionView.register(SupplementaryViewProvider.self, forSupplementaryViewOfKind: SupplementaryViewProvider.sectionHeaderElementKind, withReuseIdentifier: SupplementaryViewProvider.headerId)
-        
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
