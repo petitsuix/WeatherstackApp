@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
     private let searchBar = UITextField()
     private let browseButton = UIButton()
     private let illustrationImageView = UIImageView()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -24,7 +24,9 @@ class HomeViewController: UIViewController {
     }
     
     @objc func showCityWeatherScreen() {
-        viewModel?.showCityWeatherScreen()
+        if let searchBarText = searchBar.text {
+            viewModel?.showCityWeatherScreen(cityName: searchBarText)
+        }
     }
 }
 
@@ -64,7 +66,7 @@ extension HomeViewController {
         parentStackView.addArrangedSubview(illustrationImageView)
         
         parentStackView.setCustomSpacing(8, after: illustrationImageView)
-
+        
         view.backgroundColor = .systemBackground
         view.addSubview(parentStackView)
         
@@ -77,7 +79,7 @@ extension HomeViewController {
             illustrationImageView.widthAnchor.constraint(equalToConstant: 200),
             parentStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
             parentStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
-           // parentStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
+            // parentStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
             parentStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }

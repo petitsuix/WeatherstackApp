@@ -7,68 +7,99 @@
 
 import UIKit
 
+enum State {
+    case loading
+    case error
+    case showData
+}
+
 class WeatherViewController: UIViewController {
     
-    private enum Section {
-        case main
-        case wind
-        case miscellaneous
-    }
-    
-    private enum Item: Hashable {
-        case mainInfo(WeatherInfo)
-    }
-    
     var viewModel: WeatherViewModel?
+    var networkService = NetworkService()
     private var weatherInfo: [WeatherInfo] = []
+    private let activityIndicator = UIActivityIndicatorView(style: .large)
     
-    private var diffableDataSource: UICollectionViewDiffableDataSource<Section, Item>!
-    private var collectionView: UICollectionView!
-
+    private let cityName: String
+    
+    private var viewState: State = .loading {
+        didSet {
+            resetState()
+            switch viewState {
+            case .loading :
+                activityIndicator.startAnimating()
+            case .error :
+                collectionView.isHidden = true
+                alert("Oops", "Something went wrong")
+            case .showData :
+                collectionView.isHidden = false
+                // configureDataSource()
+            }
+        }
+    }
+    
+    private var collectionView = UICollectionView()
+    
+    init(cityName: String) {
+        self.cityName = cityName
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel?.fetchWeather(for: cityName)
+        //fetchWeather(query: cityName ?? "")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         setupView()
-        fetchWeather()
-        configureDataSource()
+        //configureDataSource()
     }
     
-    
-    func fetchWeather() {
-        viewModel.fetchWeather()
+    private func resetState() {
+        activityIndicator.stopAnimating()
     }
     
-    func configureDataSource() {
-        diffableDataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
-            switch itemIdentifier {
-            case .mainInfo(let result):
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainLargeCell", for: indexPath) as? MainLargeCell
-                cell?.weatherInfo = result
-                return cell
-            }
-        })
-        let snapshot = createWeatherSnapshot(array: weatherInfo)
-        diffableDataSource.apply(snapshot)
-    }
-    
-    private func createWeatherSnapshot(array: [WeatherInfo]) -> NSDiffableDataSourceSnapshot<Section, Item> {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
-        snapshot.appendSections([Section.main])
-        let items = array.map { value in
-            Item.mainInfo(value)
-        }
-        snapshot.appendItems(items, toSection: .main)
-        return snapshot
-    }
 }
 
 
 extension WeatherViewController {
     
     func setupView() {
-        // collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layoutWithMultipleSections())
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.register(MainLargeCell.self, forCellWithReuseIdentifier: "MainLargeCell")
+        collectionView.register(SecondaryShortCell.self, forCellWithReuseIdentifier: "SecondaryShortCell")
         collectionView.delegate = self
+        view.backgroundColor = .systemBackground
         view.addSubview(collectionView)
+        
+        collectionView.register(SupplementaryViewProvider.self, forSupplementaryViewOfKind: SupplementaryViewProvider.sectionHeaderElementKind, withReuseIdentifier: SupplementaryViewProvider.headerId)
+        
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
 }
 
 extension WeatherViewController: UICollectionViewDelegate {}
+
+extension WeatherViewController: WeatherViewModelDelegate {
+    func presentLoadingState() {
+        viewState = .loading
+    }
+    
+    func presentErrorState() {
+        viewState = .error
+    }
+    
+    func didFetchWeatherData() {
+        viewState = .showData
+    }
+}

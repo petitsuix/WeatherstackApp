@@ -9,10 +9,14 @@ import Foundation
 import UIKit
 
 class AppCoordinator: CoordinatorProtocol, AppCoordinatorProtocol {
-   
+    
     var navigationController: UINavigationController
+    private let networkService: NetworkRequests
+    
+    
     
     init(navigationController: UINavigationController) {
+        self.networkService = NetworkService()
         self.navigationController = navigationController
     }
     
@@ -23,12 +27,12 @@ class AppCoordinator: CoordinatorProtocol, AppCoordinatorProtocol {
     func showHomeScreen() {
         let homeViewController = HomeViewController()
         homeViewController.viewModel = HomeViewModel(coordinator: self)
-        navigationController.pushViewController(homeViewController, animated: false)
+        navigationController.setViewControllers([homeViewController], animated: false)
     }
     
-    func showCityWeatherScreen() {
-        let cityWeatherViewController = WeatherViewController()
-        cityWeatherViewController.viewModel = WeatherViewModel(coordinator: self)
+    func showCityWeatherScreen(cityName: String) {
+        let cityWeatherViewController = WeatherViewController(cityName: cityName)
+        cityWeatherViewController.viewModel = WeatherViewModel(coordinator: self, networkService: networkService)
         navigationController.pushViewController(cityWeatherViewController, animated: true)
     }
 }

@@ -5,6 +5,8 @@
 //  Created by Richardier on 30/05/2022.
 //
 
+import Foundation
+
 class HomeViewModel {
     
     weak var viewDelegate: HomeViewController?
@@ -15,7 +17,7 @@ class HomeViewModel {
         self.coordinator = coordinator
     }
     
-    func showCityWeatherScreen() {
-        coordinator.showCityWeatherScreen()
+    func showCityWeatherScreen(cityName: String) {
+        coordinator.showCityWeatherScreen(cityName: cityName)
     }
 }

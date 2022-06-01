@@ -11,7 +11,11 @@ class MainLargeCell: UICollectionViewCell {
     
     static let identifier = "MainLargeCell"
     
-    var weatherInfo: WeatherInfo?
+    var weatherInfo: WeatherInfo? {
+        didSet {
+            refreshData()
+        }
+    }
     
     private let cityName = UILabel()
     
@@ -32,15 +36,24 @@ class MainLargeCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("error")
     }
+    
+    func refreshData() {
+        cityName.text = weatherInfo?.location.name
+        weatherIcon.loadImage(weatherInfo?.current.weatherIcons.first ?? "")
+        if let temperatureAsInt = weatherInfo?.current.temperature {
+        temperature.text = String(temperatureAsInt) + "°"
+        }
+        weatherDescription.text = weatherInfo?.current.weatherDescriptions.first
+    }
 }
 
 extension MainLargeCell {
     
     func setupView() {
         
-        cityName.font = UIFont.preferredFont(forTextStyle: .title2)
-        
-        temperature.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        cityName.font = UIFont.systemFont(ofSize: 25)
+        weatherIcon.roundingViewCorners(radius: 12)
+        temperature.font = UIFont.boldSystemFont(ofSize: 50)
         
         iconAndTempStackView.axis = .horizontal
         iconAndTempStackView.spacing = 16
@@ -58,7 +71,12 @@ extension MainLargeCell {
         parentStackView.addArrangedSubview(weatherDescription)
         addSubview(parentStackView)
         
-        NSLayoutConstraint.activate([])
+        NSLayoutConstraint.activate([
+            parentStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            parentStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            parentStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            parentStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
     }
     
     func setupData() {
