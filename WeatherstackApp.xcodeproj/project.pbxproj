@@ -43,6 +43,7 @@
 		97BA017B2848966200BB0815 /* FakeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BA017A2848966200BB0815 /* FakeData.swift */; };
 		97BA017D284899D800BB0815 /* APITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BA017C284899D800BB0815 /* APITests.swift */; };
 		97BA017F28489DA300BB0815 /* NetworkRequestsMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BA017E28489DA300BB0815 /* NetworkRequestsMock.swift */; };
+		97BA01812848A0C400BB0815 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BA01802848A0C400BB0815 /* HomeViewModelTests.swift */; };
 		97F684EB284505DF009AE824 /* WeatherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F684EA284505DF009AE824 /* WeatherInfo.swift */; };
 		97F684ED2845254C009AE824 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F684EC2845254C009AE824 /* NetworkService.swift */; };
 		C9DDBE9489177FD09D6EEF5C /* Pods_WeatherstackAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 351E4905C75552DE90F49794 /* Pods_WeatherstackAppTests.framework */; };
@@ -110,6 +111,7 @@
 		97BA017A2848966200BB0815 /* FakeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeData.swift; sourceTree = "<group>"; };
 		97BA017C284899D800BB0815 /* APITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITests.swift; sourceTree = "<group>"; };
 		97BA017E28489DA300BB0815 /* NetworkRequestsMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestsMock.swift; sourceTree = "<group>"; };
+		97BA01802848A0C400BB0815 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		97F684EA284505DF009AE824 /* WeatherInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfo.swift; sourceTree = "<group>"; };
 		97F684EC2845254C009AE824 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		9BA2676FABE2374D27E2E05B /* Pods_WeatherstackApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherstackApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -437,6 +439,7 @@
 			isa = PBXGroup;
 			children = (
 				97030C162844BF200085EE8F /* WeatherViewModelTests.swift */,
+				97BA01802848A0C400BB0815 /* HomeViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -737,6 +740,7 @@
 			files = (
 				97BA01732848940300BB0815 /* CoordinatorMock.swift in Sources */,
 				97BA01752848954000BB0815 /* URLProtocolMock.swift in Sources */,
+				97BA01812848A0C400BB0815 /* HomeViewModelTests.swift in Sources */,
 				97BA017F28489DA300BB0815 /* NetworkRequestsMock.swift in Sources */,
 				97BA017B2848966200BB0815 /* FakeData.swift in Sources */,
 				97030C172844BF200085EE8F /* WeatherViewModelTests.swift in Sources */,

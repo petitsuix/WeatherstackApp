@@ -34,7 +34,7 @@ class APITests: XCTestCase {
     // MARK: - Tests
     
     func testGetWeatherShouldPostFailedCompletionIfError() throws {
-        let expectation = XCTestExpectation(description: "get comics") // Purpose is being able to wait for the request, operated asynchronously. Otherwise, the end of the test is read immediately without going through the completion.
+        let expectation = XCTestExpectation(description: "get weather") // Purpose is being able to wait for the request, operated asynchronously. Otherwise, the end of the test is read immediately without going through the completion.
         // Given :
         UrlProtocolMock.error = AFError.explicitlyCancelled
         // When :
@@ -51,7 +51,7 @@ class APITests: XCTestCase {
     }
 
     func testGetWeatherShouldWork() throws {
-        let expectation = XCTestExpectation(description: "get comics")
+        let expectation = XCTestExpectation(description: "get weather")
         // Given :
         UrlProtocolMock.data = FakeData.weatherData
         // When :

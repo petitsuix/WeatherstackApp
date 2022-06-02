@@ -5,7 +5,7 @@
 //  Created by Richardier on 30/05/2022.
 //
 
-import XCTest
+/* import XCTest
 
 class WeatherstackAppUITestsLaunchTests: XCTestCase {
 
@@ -29,4 +29,4 @@ class WeatherstackAppUITestsLaunchTests: XCTestCase {
         attachment.lifetime = .keepAlways
         add(attachment)
     }
-}
+} */
