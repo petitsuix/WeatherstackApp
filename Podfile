@@ -17,5 +17,6 @@ target 'WeatherstackApp' do
   end
 
 pod 'Alamofire'
+pod 'SwiftLint'
 
 end

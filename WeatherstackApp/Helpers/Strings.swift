@@ -16,4 +16,11 @@ enum Strings {
     static let windSpeed = "Wind speed"
     static let windDirection = "Wind direction"
     static let windDegree = "Wind degree"
+    static let pressure = "Pressure"
+    static let precipitation = "Precipitation"
+    static let humidity = "Humidity"
+    static let cloudCover = "Cloud cover"
+    static let feelslike = "Feels like"
+    static let uvIndex = "UV index"
+    static let visibility = "Visibility"
 }

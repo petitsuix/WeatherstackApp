@@ -7,7 +7,6 @@
 
 import Alamofire
 import Foundation
-import UIKit
 @testable import WeatherstackApp
 
 class NetworkRequestsMock: NetworkRequests {

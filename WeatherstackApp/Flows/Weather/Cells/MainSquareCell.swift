@@ -22,11 +22,6 @@ class MainSquareCell: UICollectionViewCell {
     
     //MARK: - Methods
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        layer.opacity = 0.8
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()

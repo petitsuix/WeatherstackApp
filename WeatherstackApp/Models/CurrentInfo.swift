@@ -18,10 +18,10 @@ struct Current: Codable {
     let windDegree: Int
     let windDirection: String
     let pressure: Int
-    let precip: Float
+    let precipitation: Float
     let humidity: Int
-    let cloudcover: Int
-    let feelslike: Int
+    let cloudCover: Int
+    let feelsLike: Int
     let uvIndex: Int
     let visibility: Int
     let isDay: String
@@ -35,7 +35,11 @@ struct Current: Codable {
         case windSpeed = "wind_speed"
         case windDegree = "wind_degree"
         case windDirection = "wind_dir"
-        case pressure, precip, humidity, cloudcover, feelslike
+        case pressure
+        case precipitation = "precip"
+        case humidity
+        case cloudCover = "cloudcover"
+        case feelsLike = "feelslike"
         case uvIndex = "uv_index"
         case visibility
         case isDay = "is_day"

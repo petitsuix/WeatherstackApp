@@ -6,9 +6,8 @@
 //
 
 import XCTest
-
+import Alamofire
 @testable import WeatherstackApp
-@testable import Alamofire
 
 class APITests: XCTestCase {
 
