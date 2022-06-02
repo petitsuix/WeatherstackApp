@@ -10,25 +10,29 @@ import Foundation
 
 class WeatherViewModel {
     
+    //MARK: - Properties
+    
     weak var viewDelegate: WeatherViewModelDelegate?
-    private let networkService: NetworkRequests
-    private let coordinator: AppCoordinatorProtocol
+    
     var weatherInfo: WeatherInfo? {
         didSet {
-            // viewDelegate.didFetchWeatherData()
+            guard let data = weatherInfo else { return }
+            viewDelegate?.didFetchWeatherData(weatherData: data)
         }
     }
+    
+    private let networkService: NetworkRequests
+    private let coordinator: AppCoordinatorProtocol
+    
+    //MARK: - Methods
     
     init(coordinator: AppCoordinatorProtocol, networkService: NetworkRequests) {
         self.coordinator = coordinator
         self.networkService = networkService
     }
     
-    
-    
     func fetchWeather(for cityName: String) {
-        //viewState = .loading
-     //   viewDelegate.presentLoadingState()
+        viewDelegate?.presentLoadingState()
         networkService.fetchData(query: cityName) { [weak self] result in
             guard let self = self else { return }
             DispatchQueue.main.async {
@@ -37,7 +41,7 @@ class WeatherViewModel {
                     self.weatherInfo = weatherInfo
                 case .failure(let error):
                     print("Error fetching weather data: \(error.localizedDescription)")
-                  //  self.viewDelegate.presentErrorState()
+                    self.viewDelegate?.presentErrorState()
                 }
             }
         }

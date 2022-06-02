@@ -12,17 +12,7 @@ struct WeatherInfo: Codable {
     let request: Request
     let location: Location
     let current: Current
-//
-//    enum CodingKeys: String, CodingKey {
-//        case request
-//        case location
-//        case current
-//    }
 }
-
-
-
-
 
 extension WeatherInfo: Hashable, Equatable {
     static func == (lhs: WeatherInfo, rhs: WeatherInfo) -> Bool {

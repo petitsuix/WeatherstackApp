@@ -10,7 +10,7 @@ import Foundation
 protocol WeatherViewModelDelegate: AnyObject {
     func presentLoadingState()
     func presentErrorState()
-    func didFetchWeatherData()
+    func didFetchWeatherData(weatherData: WeatherInfo)
 }
 
 protocol WeatherViewModelProtocol: AnyObject {

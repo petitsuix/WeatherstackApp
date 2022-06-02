@@ -10,10 +10,12 @@ import UIKit
 
 class AppCoordinator: CoordinatorProtocol, AppCoordinatorProtocol {
     
+    //MARK: - Properties
+    
     var navigationController: UINavigationController
     private let networkService: NetworkRequests
     
-    
+    //MARK: - Methods
     
     init(navigationController: UINavigationController) {
         self.networkService = NetworkService()
@@ -32,7 +34,9 @@ class AppCoordinator: CoordinatorProtocol, AppCoordinatorProtocol {
     
     func showCityWeatherScreen(cityName: String) {
         let cityWeatherViewController = WeatherViewController(cityName: cityName)
-        cityWeatherViewController.viewModel = WeatherViewModel(coordinator: self, networkService: networkService)
+        let cityWeatherViewModel = WeatherViewModel(coordinator: self, networkService: networkService)
+        cityWeatherViewModel.viewDelegate = cityWeatherViewController
+        cityWeatherViewController.viewModel = cityWeatherViewModel
         navigationController.pushViewController(cityWeatherViewController, animated: true)
     }
 }

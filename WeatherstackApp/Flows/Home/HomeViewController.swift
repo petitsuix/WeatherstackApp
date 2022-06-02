@@ -9,7 +9,11 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    //MARK: - Internal properties
+    
     var viewModel: HomeViewModel?
+    
+    //MARK: - Private properties
     
     private let parentStackView = UIStackView()
     private let homeTitle = UILabel()
@@ -17,11 +21,14 @@ class HomeViewController: UIViewController {
     private let browseButton = UIButton()
     private let illustrationImageView = UIImageView()
     
+    //MARK: - View life cycle methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        // Do any additional setup after loading the view.
     }
+    
+    //MARK: - objc methods
     
     @objc func showCityWeatherScreen() {
         if let searchBarText = searchBar.text {
@@ -30,15 +37,16 @@ class HomeViewController: UIViewController {
     }
 }
 
+//MARK: - View configuration
+
 extension HomeViewController {
     
-    func setupView() {
-        homeTitle.text = "What's the weather like in..."
+    private func setupView() {
+        homeTitle.text = Strings.whatsTheWeatherLikeIn
         homeTitle.font = UIFont.preferredFont(forTextStyle: .title1)
         
-        searchBar.placeholder = ""
         searchBar.attributedPlaceholder = NSAttributedString(
-            string: "Toronto, Guingamp, San Francisco...",
+            string: Strings.searchBarPlaceholder,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray2]
         )
         searchBar.borderStyle = .none
@@ -47,13 +55,13 @@ extension HomeViewController {
         searchBar.clearButtonMode = .whileEditing
         searchBar.addDoneToolbar()
         
-        browseButton.setTitle("Browse ➜", for: .normal)
+        browseButton.setTitle(Strings.browseButtonTitle, for: .normal)
         browseButton.backgroundColor = .systemOrange
         browseButton.roundingViewCorners(radius: 15)
         browseButton.addTarget(self, action: #selector(showCityWeatherScreen), for: .touchUpInside)
         
         illustrationImageView.translatesAutoresizingMaskIntoConstraints = false
-        illustrationImageView.image = UIImage(named: "halfearth_painted")
+        illustrationImageView.image = WSAImages.halfEarthImage
         
         parentStackView.translatesAutoresizingMaskIntoConstraints = false
         parentStackView.axis = .vertical
@@ -79,7 +87,6 @@ extension HomeViewController {
             illustrationImageView.widthAnchor.constraint(equalToConstant: 200),
             parentStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
             parentStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
-            // parentStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
             parentStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }

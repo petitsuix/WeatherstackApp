@@ -7,10 +7,6 @@
 
 import Alamofire
 
-protocol NetworkRequests {
-    func fetchData(query: String, completion: @escaping (Result<WeatherInfo, AFError>) -> Void)
-}
-
 final class NetworkService {
     
     private let session: Session
