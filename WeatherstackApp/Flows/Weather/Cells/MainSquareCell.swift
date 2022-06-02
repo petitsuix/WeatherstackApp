@@ -37,6 +37,7 @@ class MainSquareCell: UICollectionViewCell {
 extension MainSquareCell {
     
     private func setupView() {
+        addShadow()
         title.font = UIFont.systemFont(ofSize: 24)
         title.numberOfLines = 0
         title.textAlignment = .center

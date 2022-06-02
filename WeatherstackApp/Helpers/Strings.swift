@@ -23,4 +23,5 @@ enum Strings {
     static let feelslike = "Feels like"
     static let uvIndex = "UV index"
     static let visibility = "Visibility"
+    static let weather = "Weather"
 }

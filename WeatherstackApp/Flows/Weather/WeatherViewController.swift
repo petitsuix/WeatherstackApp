@@ -49,12 +49,14 @@ class WeatherViewController: UIViewController {
                 activityIndicator.startAnimating()
             case .error :
                 collectionView.isHidden = true
+                mapView.isHidden = true
                 alert(Strings.oops, Strings.somethingWentWrong)
             case .showData :
                 setupData()
                 configureDataSource()
                 configureMap()
                 collectionView.isHidden = false
+                mapView.isHidden = false
             }
         }
     }
@@ -83,9 +85,20 @@ class WeatherViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
         setupData()
         configureDataSource()
         setupView()
+    }
+    
+    //MARK: - objc methods
+    
+    @objc func refreshScreen() {
+        setupData()
+        configureDataSource()
+        configureMap()
+        collectionView.isHidden = false
+        mapView.isHidden = false
     }
     
     //MARK: - Methods
@@ -103,6 +116,7 @@ class WeatherViewController: UIViewController {
     
     private func resetState() {
         collectionView.isHidden = true
+        mapView.isHidden = true
         activityIndicator.stopAnimating()
     }
     
@@ -113,6 +127,7 @@ class WeatherViewController: UIViewController {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.mainCellIdentifier, for: indexPath) as? MainSquareCell
                 cell?.info.text = info
                 cell?.title.text = title
+                cell?.addShadow()
                 return cell
             }
         })
@@ -150,13 +165,23 @@ extension WeatherViewController {
     }
     
     private func setupView() {
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.titleTextAttributes = [.foregroundColor: WSAColors.black, .font: UIFont.preferredFont(forTextStyle: .headline)]
+        navBarAppearance.backgroundColor = WSAColors.cream
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refreshScreen))
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         
         topInfoStackView.translatesAutoresizingMaskIntoConstraints = false
         topInfoStackView.axis = .vertical
         
         cityNameLabel.font = UIFont.systemFont(ofSize: 25)
+        weatherIcon.addShadow()
         weatherIcon.roundingViewCorners(radius: 16)
+ 
+        weatherIcon.layer.borderWidth = 0.7
+        weatherIcon.layer.borderColor = UIColor.label.cgColor
         temperature.font = UIFont.boldSystemFont(ofSize: 50)
         
         iconAndTempStackView.axis = .horizontal
@@ -177,6 +202,7 @@ extension WeatherViewController {
         
         mapView.translatesAutoresizingMaskIntoConstraints = false
         mapView.roundingViewCorners(radius: 12)
+        
         mapView.delegate = self
         
         let collectionViewLayout = UICollectionViewFlowLayout()
@@ -184,12 +210,13 @@ extension WeatherViewController {
         collectionViewLayout.itemSize = CGSize(width: view.frame.size.width/3, height: view.frame.size.width/3)
         collectionViewLayout.minimumLineSpacing = 32
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
+        collectionView.showsVerticalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(MainSquareCell.self, forCellWithReuseIdentifier: Constant.mainCellIdentifier)
         collectionView.delegate = self
-        collectionView.backgroundColor = #colorLiteral(red: 0.3188743354, green: 0.7624829935, blue: 0.9686274529, alpha: 1)
+        collectionView.backgroundColor = WSAColors.clearBlue
         
-        view.backgroundColor = #colorLiteral(red: 0.3188743354, green: 0.7624829935, blue: 0.9686274529, alpha: 1)
+        view.backgroundColor = WSAColors.clearBlue
         view.addSubview(topInfoStackView)
         view.addSubview(mapView)
         view.addSubview(collectionView)
@@ -199,14 +226,14 @@ extension WeatherViewController {
             activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             
-            topInfoStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            topInfoStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
             topInfoStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             topInfoStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             
             mapView.topAnchor.constraint(equalTo: topInfoStackView.bottomAnchor, constant: 24),
             mapView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 48),
             mapView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -48),
-            mapView.heightAnchor.constraint(equalToConstant: 100),
+            mapView.heightAnchor.constraint(equalToConstant: 120),
             
             collectionView.topAnchor.constraint(equalTo: mapView.bottomAnchor, constant: 24),
             collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 48),

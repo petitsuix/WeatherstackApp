@@ -28,10 +28,14 @@ class HomeViewController: UIViewController {
         setupView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
     //MARK: - objc methods
     
     @objc func showCityWeatherScreen() {
-        if let searchBarText = searchBar.text {
+        if let searchBarText = searchBar.text?.replacingOccurrences(of: " ", with: "-") {
             viewModel?.showCityWeatherScreen(cityName: searchBarText)
         }
     }
@@ -42,6 +46,7 @@ class HomeViewController: UIViewController {
 extension HomeViewController {
     
     private func setupView() {
+        navigationController?.navigationBar.isHidden = true
         homeTitle.text = Strings.whatsTheWeatherLikeIn
         homeTitle.font = UIFont.preferredFont(forTextStyle: .title1)
         
@@ -53,6 +58,7 @@ extension HomeViewController {
         searchBar.backgroundColor = .secondarySystemBackground
         searchBar.roundingViewCorners(radius: 15)
         searchBar.clearButtonMode = .whileEditing
+        searchBar.autocorrectionType = .no
         searchBar.addDoneToolbar()
         
         browseButton.setTitle(Strings.browseButtonTitle, for: .normal)
